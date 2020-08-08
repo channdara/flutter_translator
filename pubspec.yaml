@@ -2,7 +2,7 @@ name: flutter_translator
 description: Flutter Translator
 version: 0.0.1
 author: mastertipsy
-homepage:
+homepage: https://github.com/channdara/flutter_translator
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
