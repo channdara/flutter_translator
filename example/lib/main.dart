@@ -11,29 +11,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _generator = TranslatorGenerator.instance;
+  final _translator = TranslatorGenerator.instance;
 
   @override
   void initState() {
-    _generator.init(
+    _translator.init(
       languageCodes: ['en', 'kh', 'ja'],
       initLanguageCode: null,
     );
-    _generator.onTranslatedLanguage = _onTranslatedLanguage;
+    _translator.onTranslatedLanguage = _onTranslatedLanguage;
     super.initState();
   }
 
   void _onTranslatedLanguage(Locale locale) {
-    setState(() {
-      _generator.reloadDelegate(locale);
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: _generator.supportedLocales,
-      localizationsDelegates: _generator.localizationsDelegates,
+      supportedLocales: _translator.supportedLocales,
+      localizationsDelegates: _translator.localizationsDelegates,
       home: SettingsScreen(),
     );
   }
@@ -45,12 +43,12 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final _generator = TranslatorGenerator.instance;
+  final _translator = TranslatorGenerator.instance;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_generator.getString(context, 'title'))),
+      appBar: AppBar(title: Text(_translator.getString(context, 'title'))),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Center(
@@ -60,7 +58,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: RaisedButton(
                   child: Text('English'),
                   onPressed: () {
-                    _generator.translate('en');
+                    _translator.translate('en');
                   },
                 ),
               ),
@@ -68,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: RaisedButton(
                   child: Text('Khmer'),
                   onPressed: () {
-                    _generator.translate('kh');
+                    _translator.translate('kh');
                   },
                 ),
               ),
@@ -76,7 +74,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: RaisedButton(
                   child: Text('Japanese'),
                   onPressed: () {
-                    _generator.translate('ja');
+                    _translator.translate('ja');
                   },
                 ),
               ),
