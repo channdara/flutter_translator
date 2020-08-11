@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translator/translator.dart';
 import 'package:flutter_translator/translator_generator.dart';
 
-/// This is just the delegate class of the Translator. It's required locale
-/// provide to the Translator class for load the json file.
 class TranslatorDelegate extends LocalizationsDelegate<Translator> {
   TranslatorDelegate(this.newLocale);
 

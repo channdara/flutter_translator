@@ -4,8 +4,6 @@ import 'package:flutter_translator/translator.dart';
 import 'package:flutter_translator/translator_delegate.dart';
 import 'package:flutter_translator/translator_util.dart';
 
-/// Callback for the translation. This will call after the translate()
-/// function is called.
 typedef TranslatorCallback = void Function(Locale);
 
 class TranslatorGenerator {
@@ -22,11 +20,12 @@ class TranslatorGenerator {
   /// The list of supported language code provide by the init() function
   List<String> _languageCodes = const [];
 
-  /// Translator callback after translate() called
-  TranslatorCallback onTranslatedLanguage;
-
   /// The current locale of the app. It will change after translate() called.
   Locale _currentLocale;
+
+  /// Callback for the translation. This will call after the translate()
+  /// function is called.
+  TranslatorCallback onTranslatedLanguage;
 
   /// Initialize the supported language and init language code when the app is
   /// start up. Both field will required.
@@ -47,6 +46,7 @@ class TranslatorGenerator {
       initCountryCode,
     );
     this._delegate = TranslatorDelegate(_currentLocale);
+    this.onTranslatedLanguage(_currentLocale);
   }
 
   /// Call this function at where you want to translate the app like by

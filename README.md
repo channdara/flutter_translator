@@ -16,7 +16,7 @@ project_root_directory
         |__ localization_ja.json
 |__ ...
 ```
-And don't for get to add asset path to the pubspec.yaml:
+And don't for get to add asset path to the **pubspec.yaml**:
 ```
 assets:
     - assets/locales/
