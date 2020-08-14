@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     _translator.init(
       languageCodes: ['en', 'kh', 'ja'],
-      initLanguageCode: null,
+      initLanguageCode: 'kh',
     );
     _translator.onTranslatedLanguage = _onTranslatedLanguage;
     super.initState();

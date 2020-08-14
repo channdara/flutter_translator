@@ -12,7 +12,7 @@ mixin TranslatorUtil {
   static Future<Locale> getLocale() async {
     final pref = await SharedPreferences.getInstance();
     final prefData = pref.getString(_locale_key);
-    if (prefData == null) return Locale('en', 'US');
+    if (prefData == null) return null;
     final locale = json.decode(prefData);
     return Locale(locale[_language_code], locale[_country_code]);
   }

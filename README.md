@@ -6,15 +6,15 @@ and the file name has to be **localization_{languageCode}.json** example: **loca
 So the directory tree will look like this:
 ```
 project_root_directory
-|__ ...
-|__ assets
-    |__ fonts
-    |__ images
-    |__ locales
-        |__ localization_en.json
-        |__ localization_kh.json
-        |__ localization_ja.json
-|__ ...
+|-- ...
+|-- assets
+    |-- fonts
+    |-- images
+    |-- locales
+        |-- localization_en.json
+        |-- localization_kh.json
+        |-- localization_ja.json
+|-- ...
 ```
 And don't for get to add asset path to the **pubspec.yaml**:
 ```
