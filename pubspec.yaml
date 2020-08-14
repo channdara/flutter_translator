@@ -8,6 +8,8 @@ environment:
   flutter: ">=1.12.13 <2.0.0"
 
 dependencies:
+  flutter:
+    sdk: flutter
   flutter_localizations:
     sdk: flutter
   shared_preferences: ^0.5.8
