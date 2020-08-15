@@ -6,15 +6,15 @@ and the file name has to be **localization_{languageCode}.json** example: **loca
 So the directory tree will look like this:
 ```
 project_root_directory
-|-- ...
-|-- assets
-    |-- fonts
-    |-- images
-    |-- locales
-        |-- localization_en.json
-        |-- localization_kh.json
-        |-- localization_ja.json
-|-- ...
+|__ ...
+|__ assets
+    |__ fonts
+    |__ images
+    |__ locales
+        |__ localization_en.json
+        |__ localization_km.json
+        |__ localization_ja.json
+|__ ...
 ```
 And don't for get to add asset path to the **pubspec.yaml**:
 ```
@@ -33,7 +33,7 @@ final TranslatorGenerator _translator = TranslatorGenerator.instance;
 @override
 void initState() {
     _translator.init(
-        languageCodes: ['en', 'kh', 'ja'],
+        supportedLanguageCodes: ['en', 'kh', 'ja'],
         initLanguageCode: 'en',
     );
     _translator.onTranslatedLanguage = _onTranslatedLanguage;
@@ -70,4 +70,14 @@ RaisedButton(
 **To display the value from the json file, just use the getString function by providing context and key**
 ```
 _translator.getString(context, 'title');
+```
+
+**You also can get the language name too. If you don't specify the language code for the function,**
+**it will return the language name depend on the current app locale**
+```
+_translator.getLanguageName(languageCode: 'en');    // English
+_translator.getLanguageName(languageCode: 'km');    // ភាសាខ្មែរ
+_translator.getLanguageName(languageCode: 'ja');    // 日本語
+
+_translator.getLanguageName();  // return current language name depend on current app locale
 ```

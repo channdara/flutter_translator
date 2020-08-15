@@ -16,8 +16,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     _translator.init(
-      languageCodes: ['en', 'kh', 'ja'],
-      initLanguageCode: 'kh',
+      supportedLanguageCodes: ['en', 'km', 'ja'],
+      initLanguageCode: 'km',
     );
     _translator.onTranslatedLanguage = _onTranslatedLanguage;
     super.initState();
@@ -51,35 +51,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(title: Text(_translator.getString(context, 'title'))),
       body: Container(
         padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Row(
-            children: [
-              Expanded(
-                child: RaisedButton(
-                  child: Text('English'),
-                  onPressed: () {
-                    _translator.translate('en');
-                  },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Current language is: ${_translator.getLanguageName()}'),
+            const SizedBox(height: 64.0),
+            Row(
+              children: [
+                Expanded(
+                  child: RaisedButton(
+                    child: Text('English'),
+                    onPressed: () {
+                      _translator.translate('en');
+                    },
+                  ),
                 ),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  child: Text('Khmer'),
-                  onPressed: () {
-                    _translator.translate('kh');
-                  },
+                Expanded(
+                  child: RaisedButton(
+                    child: Text('Khmer'),
+                    onPressed: () {
+                      _translator.translate('km');
+                    },
+                  ),
                 ),
-              ),
-              Expanded(
-                child: RaisedButton(
-                  child: Text('Japanese'),
-                  onPressed: () {
-                    _translator.translate('ja');
-                  },
+                Expanded(
+                  child: RaisedButton(
+                    child: Text('Japanese'),
+                    onPressed: () {
+                      _translator.translate('ja', save: false);
+                    },
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );

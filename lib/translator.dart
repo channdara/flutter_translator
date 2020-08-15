@@ -7,9 +7,10 @@ import 'package:flutter/services.dart';
 class Translator {
   Translator._singleton();
 
-  static final Translator _instance = Translator._singleton();
+  static final Translator instance = Translator._singleton();
 
-  static Map<String, dynamic> _map;
+  static Map<String, dynamic> _string;
+  static Map<String, dynamic> _name;
 
   static Translator of(BuildContext context) =>
       Localizations.of<Translator>(context, Translator);
@@ -23,12 +24,26 @@ class Translator {
   static Future<Translator> load(Locale locale) async {
     final path = 'assets/locales/localization_${locale.languageCode}.json';
     final jsonContent = await rootBundle.loadString(path);
-    _map = json.decode(jsonContent) as Map<String, dynamic>;
-    return _instance;
+    _string = json.decode(jsonContent) as Map<String, dynamic>;
+    return instance;
+  }
+
+  /// This function will load the language name from the json file. This might
+  /// not be 100% accurate by you can help by reporting the incorrect language
+  /// name in our repository.
+  Future<void> loadLanguageName() async {
+    final path = 'packages/flutter_translator/language_name.json';
+    final jsonContent = await rootBundle.loadString(path);
+    _name = json.decode(jsonContent) as Map<String, dynamic>;
   }
 
   /// This function will return the value of the json file which loaded by the
   /// load function above.
   String getString(String key) =>
-      _map[key] == null ? '$key not found' : _map[key].toString();
+      _string[key] == null ? '$key not found' : _string[key].toString();
+
+  /// This function will return the language name by the language code provided.
+  String getName(String languageCode) => _name[languageCode] == null
+      ? 'Name for $languageCode not found'
+      : _name[languageCode].toString();
 }
