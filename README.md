@@ -33,7 +33,7 @@ final TranslatorGenerator _translator = TranslatorGenerator.instance;
 @override
 void initState() {
     _translator.init(
-        supportedLanguageCodes: ['en', 'kh', 'ja'],
+        supportedLanguageCodes: ['en', 'km', 'ja'],
         initLanguageCode: 'en',
     );
     _translator.onTranslatedLanguage = _onTranslatedLanguage;
@@ -79,5 +79,5 @@ _translator.getLanguageName(languageCode: 'en');    // English
 _translator.getLanguageName(languageCode: 'km');    // ភាសាខ្មែរ
 _translator.getLanguageName(languageCode: 'ja');    // 日本語
 
-_translator.getLanguageName();  // return current language name depend on current app locale
+_translator.getLanguageName();  // get language name depend on current app locale
 ```
