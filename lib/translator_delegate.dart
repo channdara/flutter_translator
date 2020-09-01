@@ -11,7 +11,8 @@ class TranslatorDelegate extends LocalizationsDelegate<Translator> {
   /// language provided by the app configuration
   @override
   bool isSupported(Locale locale) =>
-      TranslatorGenerator.instance.languageCodes.contains(locale.languageCode);
+      TranslatorGenerator.instance.supportedLanguageCodes
+          .contains(locale.languageCode);
 
   /// The override function from LocalizationsDelegate to load the locale
   @override
