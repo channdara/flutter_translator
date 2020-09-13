@@ -86,7 +86,7 @@ class TranslatorGenerator {
       Translator.instance.getName(languageCode ?? _currentLocale.languageCode);
 
   /// Get the list of supported language code provide by the init() function
-  List<String> get languageCodes => this._supportedLanguageCodes;
+  List<String> get supportedLanguageCodes => this._supportedLanguageCodes;
 
   /// Get the current locale of the app.
   Locale get currentLocale => this._currentLocale;
