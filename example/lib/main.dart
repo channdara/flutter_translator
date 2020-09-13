@@ -60,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 Expanded(
                   child: RaisedButton(
-                    child: Text('English'),
+                    child: const Text('English'),
                     onPressed: () {
                       _translator.translate('en');
                     },
@@ -68,7 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 Expanded(
                   child: RaisedButton(
-                    child: Text('Khmer'),
+                    child: const Text('Khmer'),
                     onPressed: () {
                       _translator.translate('km');
                     },
@@ -76,7 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 Expanded(
                   child: RaisedButton(
-                    child: Text('Japanese'),
+                    child: const Text('Japanese'),
                     onPressed: () {
                       _translator.translate('ja', save: false);
                     },

@@ -1,4 +1,8 @@
-# How to use
+# Flutter Translator
+Flutter Translator is a package use for in-app localization with json file.
+More easier and faster to implement. This package is inspired by the flutter_localizations itself.
+
+# How To Use
 
 ## Create the json file for the language translation
 We're not support the dynamic path and file name yet so the json files have to be at the **assets/locales/**
@@ -23,12 +27,12 @@ assets:
 ```
 
 ## Project configuration
-**Initialize the TranslatorGenerator object (this can be local or global, up to you)**
+* Initialize the TranslatorGenerator object (this can be local or global, up to you)
 ```
 final TranslatorGenerator _translator = TranslatorGenerator.instance;
 ```
 
-**Init the supported languages and default language code for the app. This has to be done only at the main.dart**
+* Init the supported languages and default language code for the app. This has to be done only at the main.dart
 ```
 @override
 void initState() {
@@ -45,7 +49,7 @@ void _onTranslatedLanguage(Locale locale) {
 }
 ```
 
-**Add supportedLocales and localizationsDelegates to the MaterialApp**
+* Add supportedLocales and localizationsDelegates to the MaterialApp
 ```
 @override
 Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-**Call the translate function anytime you want to translate the app and provide it with the language code**
+* Call the translate function anytime you want to translate the app and provide it with the language code
 ```
 RaisedButton(
     child: Text('English'),
@@ -67,13 +71,13 @@ RaisedButton(
 ),
 ```
 
-**To display the value from the json file, just use the getString function by providing context and key**
+* To display the value from the json file, just use the getString function by providing context and key
 ```
 _translator.getString(context, 'title');
 ```
 
-**You also can get the language name too. If you don't specify the language code for the function,**
-**it will return the language name depend on the current app locale**
+* You also can get the language name too. If you don't specify the language code for the function,
+it will return the language name depend on the current app locale
 ```
 _translator.getLanguageName(languageCode: 'en');    // English
 _translator.getLanguageName(languageCode: 'km');    // ភាសាខ្មែរ

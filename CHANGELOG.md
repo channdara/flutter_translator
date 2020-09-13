@@ -1,3 +1,5 @@
+## 0.0.7
+* add possibility to add more custom delegate at the **init()** function
 ## 0.0.6
 * added get language name feature
 * in **init()** function, rename **languageCodes** to **supportedLanguageCodes**

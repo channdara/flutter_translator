@@ -29,7 +29,7 @@ class Translator {
   }
 
   /// This function will load the language name from the json file. This might
-  /// not be 100% accurate by you can help by reporting the incorrect language
+  /// not be 100% accurate but you can help by reporting the incorrect language
   /// name in our repository.
   Future<void> loadLanguageName() async {
     final path = 'packages/flutter_translator/language_name.json';
