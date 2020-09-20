@@ -1,3 +1,5 @@
+## 0.0.8
+* rollback change on *0.0.7* which cause problem to the localization process
 ## 0.0.7
 * add possibility to add more custom delegate at the **init()** function
 ## 0.0.6

@@ -10,7 +10,6 @@ class TranslatorGenerator {
   TranslatorGenerator._singleton() {
     Translator.instance.loadLanguageName();
     _delegate = TranslatorDelegate(null);
-    _localizationsDelegates.add(_delegate);
   }
 
   /// The instance object of TranslatorGenerator class.
@@ -29,13 +28,6 @@ class TranslatorGenerator {
   /// function is called.
   TranslatorCallback onTranslatedLanguage;
 
-  /// The default needed delegate for localization
-  final List<LocalizationsDelegate<dynamic>> _localizationsDelegates = [
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ];
-
   /// Initialize the supported languages and init language code when the app is
   /// start up. Both field will required.
   ///
@@ -48,11 +40,7 @@ class TranslatorGenerator {
     @required List<String> supportedLanguageCodes,
     @required String initLanguageCode,
     String initCountryCode,
-    List<LocalizationsDelegate<dynamic>> otherDelegate,
   }) async {
-    if (otherDelegate != null && otherDelegate.isNotEmpty) {
-      _localizationsDelegates.addAll(otherDelegate);
-    }
     this._supportedLanguageCodes = supportedLanguageCodes;
     this._currentLocale = await TranslatorUtil.getInitLocale(
       initLanguageCode,
@@ -98,6 +86,10 @@ class TranslatorGenerator {
 
   /// Apply all the needed delegate and the package delegate for the app.
   /// This will use at the MaterialApp
-  Iterable<LocalizationsDelegate<dynamic>> get localizationsDelegates =>
-      _localizationsDelegates;
+  Iterable<LocalizationsDelegate<dynamic>> get localizationsDelegates => [
+        _delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ];
 }
