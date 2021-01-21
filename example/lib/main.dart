@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_translator/translator_generator.dart';
+import 'package:flutter_translator/flutter_translator.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_translator/translator.dart';
-import 'package:flutter_translator/translator_delegate.dart';
-import 'package:flutter_translator/translator_util.dart';
+import 'package:flutter_translator/src/delegate.dart';
+import 'package:flutter_translator/src/translator.dart';
+import 'package:flutter_translator/src/translator_util.dart';
 
 typedef TranslatorCallback = void Function(Locale);
 

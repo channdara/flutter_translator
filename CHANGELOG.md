@@ -1,3 +1,5 @@
+## 0.0.9
+* nothing new, just refactor some code and performance
 ## 0.0.8
 * rollback change on *0.0.7* which cause problem to the localization process
 ## 0.0.7

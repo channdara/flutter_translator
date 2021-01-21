@@ -11,6 +11,7 @@ So the directory tree will look like this:
 ```
 project_root_directory
 |__ ...
+|__ android
 |__ assets
     |__ fonts
     |__ images
@@ -18,6 +19,8 @@ project_root_directory
         |__ localization_en.json
         |__ localization_km.json
         |__ localization_ja.json
+|__ ios
+|__ lib
 |__ ...
 ```
 And don't for get to add asset path to the **pubspec.yaml**:
@@ -29,18 +32,18 @@ assets:
 ## Project configuration
 * Initialize the TranslatorGenerator object (this can be local or global, up to you)
 ```
-final TranslatorGenerator _translator = TranslatorGenerator.instance;
+final TranslatorGenerator translator = TranslatorGenerator.instance;
 ```
 
 * Init the supported languages and default language code for the app. This has to be done only at the main.dart
 ```
 @override
 void initState() {
-    _translator.init(
+    translator.init(
         supportedLanguageCodes: ['en', 'km', 'ja'],
         initLanguageCode: 'en',
     );
-    _translator.onTranslatedLanguage = _onTranslatedLanguage;
+    translator.onTranslatedLanguage = _onTranslatedLanguage;
     super.initState();
 }
 
@@ -54,8 +57,8 @@ void _onTranslatedLanguage(Locale locale) {
 @override
 Widget build(BuildContext context) {
     return MaterialApp(
-        supportedLocales: _translator.supportedLocales,
-        localizationsDelegates: _translator.localizationsDelegates,
+        supportedLocales: translator.supportedLocales,
+        localizationsDelegates: translator.localizationsDelegates,
         home: HomeScreen(),
     );
 }
@@ -66,22 +69,22 @@ Widget build(BuildContext context) {
 RaisedButton(
     child: Text('English'),
     onPressed: () {
-        _translator.translate('en');
+        translator.translate('en');
     },
 ),
 ```
 
 * To display the value from the json file, just use the getString function by providing context and key
 ```
-_translator.getString(context, 'title');
+translator.getString(context, 'title');
 ```
 
 * You also can get the language name too. If you don't specify the language code for the function,
 it will return the language name depend on the current app locale
 ```
-_translator.getLanguageName(languageCode: 'en');    // English
-_translator.getLanguageName(languageCode: 'km');    // ភាសាខ្មែរ
-_translator.getLanguageName(languageCode: 'ja');    // 日本語
+translator.getLanguageName(languageCode: 'en');  // English
+translator.getLanguageName(languageCode: 'km');  // ភាសាខ្មែរ
+translator.getLanguageName(languageCode: 'ja');  // 日本語
 
-_translator.getLanguageName();  // get language name depend on current app locale
+translator.getLanguageName();  // get language name depend on current app locale
 ```

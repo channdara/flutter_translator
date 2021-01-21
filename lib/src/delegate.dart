@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_translator/translator.dart';
-import 'package:flutter_translator/translator_generator.dart';
+import 'package:flutter_translator/src/generator.dart';
+import 'package:flutter_translator/src/translator.dart';
 
 class TranslatorDelegate extends LocalizationsDelegate<Translator> {
   TranslatorDelegate(this.newLocale);

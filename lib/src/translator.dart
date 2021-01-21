@@ -32,7 +32,7 @@ class Translator {
   /// not be 100% accurate but you can help by reporting the incorrect language
   /// name in our repository.
   Future<void> loadLanguageName() async {
-    final path = 'packages/flutter_translator/language_name.json';
+    final path = 'packages/flutter_translator/assets/language_name.json';
     final jsonContent = await rootBundle.loadString(path);
     _name = json.decode(jsonContent) as Map<String, dynamic>;
   }
