@@ -1,3 +1,5 @@
+## 0.0.10
+* solve the problem where **currentLocale** is null when try to call at the **main.dart** (after **initState()**)
 ## 0.0.9
 * nothing new, just refactor some code and performance
 ## 0.0.8

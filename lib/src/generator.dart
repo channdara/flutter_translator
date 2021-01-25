@@ -42,6 +42,7 @@ class TranslatorGenerator {
     String initCountryCode,
   }) async {
     this._supportedLanguageCodes = supportedLanguageCodes;
+    this._currentLocale = Locale(initLanguageCode, initCountryCode);
     this._currentLocale = await TranslatorUtil.getInitLocale(
       initLanguageCode,
       initCountryCode,
