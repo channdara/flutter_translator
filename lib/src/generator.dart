@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translator/src/delegate.dart';
+import 'package:flutter_translator/src/map_locale.dart';
 import 'package:flutter_translator/src/translator.dart';
-import 'package:flutter_translator/src/translator_util.dart';
+import 'package:flutter_translator/src/util.dart';
 
 typedef TranslatorCallback = void Function(Locale);
 
@@ -41,14 +42,38 @@ class TranslatorGenerator {
     @required String initLanguageCode,
     String initCountryCode,
   }) async {
-    this._supportedLanguageCodes = supportedLanguageCodes;
-    this._currentLocale = Locale(initLanguageCode, initCountryCode);
-    this._currentLocale = await TranslatorUtil.getInitLocale(
+    Translator.instance.initStatus = false;
+    _supportedLanguageCodes = supportedLanguageCodes;
+    await _handleLocale(initLanguageCode, initCountryCode);
+  }
+
+  /// This work similar to the init() function too. The different is, init() load
+  /// string from json file, initWithMap() load string from map provided by
+  /// the list of mapLocale (mapLocales).
+  Future<void> initWithMap({
+    @required List<MapLocale> mapLocales,
+    @required String initLanguageCode,
+    String initCountryCode,
+  }) async {
+    Translator.instance.initStatus = true;
+    Translator.instance.mapLocales = mapLocales;
+    _supportedLanguageCodes = mapLocales.map((e) => e.languageCode).toList();
+    await _handleLocale(initLanguageCode, initCountryCode);
+  }
+
+  /// This will handle the locale of the app. Load the saved locale and init new
+  /// delegate for the app localization.
+  Future<void> _handleLocale(
+    String initLanguageCode,
+    String initCountryCode,
+  ) async {
+    _currentLocale = Locale(initLanguageCode, initCountryCode);
+    _currentLocale = await TranslatorUtil.getInitLocale(
       initLanguageCode,
       initCountryCode,
     );
-    this._delegate = TranslatorDelegate(_currentLocale);
-    this.onTranslatedLanguage(_currentLocale);
+    _delegate = TranslatorDelegate(_currentLocale);
+    onTranslatedLanguage(_currentLocale);
   }
 
   /// Call this function at where you want to translate the app like by
@@ -59,9 +84,9 @@ class TranslatorGenerator {
     bool save = true,
   }) {
     if (save) TranslatorUtil.setLocale(languageCode, countryCode);
-    this._currentLocale = Locale(languageCode, countryCode);
-    this._delegate = TranslatorDelegate(_currentLocale);
-    this.onTranslatedLanguage(_currentLocale);
+    _currentLocale = Locale(languageCode, countryCode);
+    _delegate = TranslatorDelegate(_currentLocale);
+    onTranslatedLanguage(_currentLocale);
   }
 
   /// This just call the getString() function from Translator class for getting
@@ -75,10 +100,10 @@ class TranslatorGenerator {
       Translator.instance.getName(languageCode ?? _currentLocale.languageCode);
 
   /// Get the list of supported language code provide by the init() function
-  List<String> get supportedLanguageCodes => this._supportedLanguageCodes;
+  List<String> get supportedLanguageCodes => _supportedLanguageCodes;
 
   /// Get the current locale of the app.
-  Locale get currentLocale => this._currentLocale;
+  Locale get currentLocale => _currentLocale;
 
   /// Generate the supported locales for the app.
   /// This will use at the MaterialAap

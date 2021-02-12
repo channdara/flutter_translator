@@ -1,13 +1,14 @@
 # Flutter Translator
-Flutter Translator is a package use for in-app localization with json file.
-More easier and faster to implement. This package is inspired by the flutter_localizations itself.
+Flutter Translator is a package use for in-app localization with json file. 
+More easier and faster to implement. This package is inspired by the 
+flutter_localizations itself.
 
 # How To Use
 
 ## Create the json file for the language translation
-We're not support the dynamic path and file name yet so the json files have to be at the **assets/locales/**
-and the file name has to be **localization_{languageCode}.json** example: **localization_en.json**
-So the directory tree will look like this:
+We're not support the dynamic path and file name yet so the json files have to be at the 
+**assets/locales/** and the file name has to be **localization_{languageCode}.json** 
+example: **localization_en.json** So the directory tree will look like this:
 ```
 project_root_directory
 |__ ...
@@ -35,12 +36,26 @@ assets:
 final TranslatorGenerator translator = TranslatorGenerator.instance;
 ```
 
-* Init the supported languages and default language code for the app. This has to be done only at the main.dart
+* Init the supported languages and default language code for the app. 
+Using init() function if you wish to do the localization with json file 
+or initWithMap() with Map<String, dynamic>. 
+This has to be done only at the main.dart or the first MaterialApp in your project.
 ```
 @override
 void initState() {
     translator.init(
         supportedLanguageCodes: ['en', 'km', 'ja'],
+        initLanguageCode: 'en',
+    );
+
+    /// or
+
+    _translator.initWithMap(
+        mapLocales: [
+            MapLocale('en', MAP_EN),
+            MapLocale('km', MAP_KM),
+            MapLocale('ja', MAP_JA),
+        ],
         initLanguageCode: 'en',
     );
     translator.onTranslatedLanguage = _onTranslatedLanguage;
@@ -64,7 +79,8 @@ Widget build(BuildContext context) {
 }
 ```
 
-* Call the translate function anytime you want to translate the app and provide it with the language code
+* Call the translate function anytime you want to translate the app and provide it with 
+the language code
 ```
 RaisedButton(
     child: Text('English'),
@@ -74,7 +90,8 @@ RaisedButton(
 ),
 ```
 
-* To display the value from the json file, just use the getString function by providing context and key
+* To display the value from the json file, just use the getString function 
+by providing context and key
 ```
 translator.getString(context, 'title');
 ```

@@ -1,6 +1,6 @@
 name: flutter_translator
 description: Flutter Translator is a package use for in-app localization with json file. More easier and faster to implement. This package is inspired by the flutter_localizations itself.
-version: 0.0.10
+version: 0.0.11
 homepage: https://github.com/channdara/flutter_translator
 
 environment:
@@ -20,7 +20,7 @@ dev_dependencies:
 
 flutter:
   assets:
-    - packages/flutter_translator/language_name.json
+    - packages/flutter_translator/assets/language_name.json
 
   plugin:
     platforms:

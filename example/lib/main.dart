@@ -11,13 +11,25 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _translator = TranslatorGenerator.instance;
+  final TranslatorGenerator _translator = TranslatorGenerator.instance;
+
+  final Map<String, dynamic> en = {"title": "English Title From Map"};
+  final Map<String, dynamic> km = {"title": "Khmer Title From Map"};
+  final Map<String, dynamic> ja = {"title": "Japanese Title From Map"};
 
   @override
   void initState() {
-    _translator.init(
-      supportedLanguageCodes: ['en', 'km', 'ja'],
-      initLanguageCode: 'km',
+    // _translator.init(
+    //   supportedLanguageCodes: ['en', 'km', 'ja'],
+    //   initLanguageCode: 'km',
+    // );
+    _translator.initWithMap(
+      mapLocales: [
+        MapLocale('en', en),
+        MapLocale('km', km),
+        MapLocale('ja', ja),
+      ],
+      initLanguageCode: 'en',
     );
     _translator.onTranslatedLanguage = _onTranslatedLanguage;
     super.initState();

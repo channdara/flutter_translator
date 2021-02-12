@@ -1,3 +1,5 @@
+## 0.0.11
+* add the possibility to do localization with Map<String, dynamic> instead of json file. Check the README or example for more information with the initWithMap() function
 ## 0.0.10
 * solve the problem where **currentLocale** is null when try to call at the **main.dart** (after **initState()**)
 ## 0.0.9
