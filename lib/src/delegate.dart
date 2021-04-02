@@ -5,7 +5,7 @@ import 'package:flutter_translator/src/translator.dart';
 class TranslatorDelegate extends LocalizationsDelegate<Translator> {
   TranslatorDelegate(this.newLocale);
 
-  final Locale newLocale;
+  final Locale? newLocale;
 
   /// The override function from LocalizationsDelegate to check the supported
   /// language provided by the app configuration

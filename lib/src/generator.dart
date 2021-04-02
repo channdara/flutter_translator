@@ -5,7 +5,7 @@ import 'package:flutter_translator/src/map_locale.dart';
 import 'package:flutter_translator/src/translator.dart';
 import 'package:flutter_translator/src/util.dart';
 
-typedef TranslatorCallback = void Function(Locale);
+typedef TranslatorCallback = void Function(Locale?);
 
 class TranslatorGenerator {
   TranslatorGenerator._singleton() {
@@ -17,17 +17,17 @@ class TranslatorGenerator {
   static final TranslatorGenerator instance = TranslatorGenerator._singleton();
 
   /// The package delegate. This is private, only use in the package.
-  TranslatorDelegate _delegate;
+  TranslatorDelegate? _delegate;
 
   /// The list of supported language code provide by the init() function
   List<String> _supportedLanguageCodes = const [];
 
   /// The current locale of the app. It will change after translate() called.
-  Locale _currentLocale;
+  Locale? _currentLocale;
 
   /// Callback for the translation. This will call after the translate()
   /// function is called.
-  TranslatorCallback onTranslatedLanguage;
+  late TranslatorCallback onTranslatedLanguage;
 
   /// Initialize the supported languages and init language code when the app is
   /// start up. Both field will required.
@@ -38,9 +38,9 @@ class TranslatorGenerator {
   /// initLanguageCode mostly passed from the shared_preferences for checking
   /// the init language to display when the app is start up.
   Future<void> init({
-    @required List<String> supportedLanguageCodes,
-    @required String initLanguageCode,
-    String initCountryCode,
+    required List<String> supportedLanguageCodes,
+    required String initLanguageCode,
+    String? initCountryCode,
   }) async {
     Translator.instance.initStatus = false;
     _supportedLanguageCodes = supportedLanguageCodes;
@@ -51,9 +51,9 @@ class TranslatorGenerator {
   /// string from json file, initWithMap() load string from map provided by
   /// the list of mapLocale (mapLocales).
   Future<void> initWithMap({
-    @required List<MapLocale> mapLocales,
-    @required String initLanguageCode,
-    String initCountryCode,
+    required List<MapLocale> mapLocales,
+    required String initLanguageCode,
+    String? initCountryCode,
   }) async {
     Translator.instance.initStatus = true;
     Translator.instance.mapLocales = mapLocales;
@@ -65,7 +65,7 @@ class TranslatorGenerator {
   /// delegate for the app localization.
   Future<void> _handleLocale(
     String initLanguageCode,
-    String initCountryCode,
+    String? initCountryCode,
   ) async {
     _currentLocale = Locale(initLanguageCode, initCountryCode);
     _currentLocale = await TranslatorUtil.getInitLocale(
@@ -92,18 +92,18 @@ class TranslatorGenerator {
   /// This just call the getString() function from Translator class for getting
   /// the translated value from json file.
   String getString(BuildContext context, String key) =>
-      Translator.of(context).getString(key);
+      Translator.of(context)!.getString(key);
 
   /// This just call the getName() function from Translator class for getting
   /// the full language name by the language code.
-  String getLanguageName({String languageCode}) =>
-      Translator.instance.getName(languageCode ?? _currentLocale.languageCode);
+  String getLanguageName({String? languageCode}) =>
+      Translator.instance.getName(languageCode ?? _currentLocale!.languageCode);
 
   /// Get the list of supported language code provide by the init() function
   List<String> get supportedLanguageCodes => _supportedLanguageCodes;
 
   /// Get the current locale of the app.
-  Locale get currentLocale => _currentLocale;
+  Locale? get currentLocale => _currentLocale;
 
   /// Generate the supported locales for the app.
   /// This will use at the MaterialAap
@@ -113,7 +113,7 @@ class TranslatorGenerator {
   /// Apply all the needed delegate and the package delegate for the app.
   /// This will use at the MaterialApp
   Iterable<LocalizationsDelegate<dynamic>> get localizationsDelegates => [
-        _delegate,
+        _delegate!,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

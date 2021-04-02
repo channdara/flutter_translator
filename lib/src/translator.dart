@@ -10,12 +10,12 @@ class Translator {
 
   static final Translator instance = Translator._singleton();
 
-  static Map<String, dynamic> _string = {};
-  static Map<String, dynamic> _name = {};
+  static Map<String, dynamic>? _string = {};
+  static Map<String, dynamic>? _name = {};
   static bool _isInitWithMap = false;
   static List<MapLocale> _mapLocales = [];
 
-  static Translator of(BuildContext context) =>
+  static Translator? of(BuildContext context) =>
       Localizations.of<Translator>(context, Translator);
 
   set initStatus(bool status) => _isInitWithMap = status;
@@ -37,7 +37,7 @@ class Translator {
     } else {
       final path = 'assets/locales/localization_${locale.languageCode}.json';
       final jsonContent = await rootBundle.loadString(path);
-      _string = json.decode(jsonContent) as Map<String, dynamic>;
+      _string = json.decode(jsonContent) as Map<String, dynamic>?;
     }
     return instance;
   }
@@ -48,16 +48,16 @@ class Translator {
   Future<void> loadLanguageName() async {
     final path = 'packages/flutter_translator/assets/language_name.json';
     final jsonContent = await rootBundle.loadString(path);
-    _name = json.decode(jsonContent) as Map<String, dynamic>;
+    _name = json.decode(jsonContent) as Map<String, dynamic>?;
   }
 
   /// This function will return the value of the json file which loaded by the
   /// load function above.
   String getString(String key) =>
-      _string[key] == null ? '$key not found' : _string[key].toString();
+      _string![key] == null ? '$key not found' : _string![key].toString();
 
   /// This function will return the language name by the language code provided.
-  String getName(String languageCode) => _name[languageCode] == null
+  String getName(String languageCode) => _name![languageCode] == null
       ? 'Name for $languageCode not found'
-      : _name[languageCode].toString();
+      : _name![languageCode].toString();
 }

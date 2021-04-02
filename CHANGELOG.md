@@ -1,3 +1,5 @@
+## 0.1.0
+* migrate to support null-safety
 ## 0.0.12
 * update some dependencies use to support the package
 ## 0.0.11

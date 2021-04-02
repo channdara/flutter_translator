@@ -13,9 +13,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final TranslatorGenerator _translator = TranslatorGenerator.instance;
 
-  final Map<String, dynamic> en = {"title": "English Title From Map"};
-  final Map<String, dynamic> km = {"title": "Khmer Title From Map"};
-  final Map<String, dynamic> ja = {"title": "Japanese Title From Map"};
+  final Map<String, dynamic> en = {'title': 'English Title From Map'};
+  final Map<String, dynamic> km = {'title': 'Khmer Title From Map'};
+  final Map<String, dynamic> ja = {'title': 'Japanese Title From Map'};
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  void _onTranslatedLanguage(Locale locale) {
+  void _onTranslatedLanguage(Locale? locale) {
     setState(() {});
   }
 
@@ -71,7 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               children: [
                 Expanded(
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: const Text('English'),
                     onPressed: () {
                       _translator.translate('en');
@@ -79,7 +79,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 Expanded(
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: const Text('Khmer'),
                     onPressed: () {
                       _translator.translate('km');
@@ -87,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 Expanded(
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: const Text('Japanese'),
                     onPressed: () {
                       _translator.translate('ja', save: false);

@@ -9,7 +9,7 @@ mixin TranslatorUtil {
   static const String _country_code = 'translator_country_code';
 
   /// Load the save locale in the shared_preferences.
-  static Future<Locale> _getLocale() async {
+  static Future<Locale?> _getLocale() async {
     final pref = await SharedPreferences.getInstance();
     final prefData = pref.getString(_locale_key);
     if (prefData == null) return null;
@@ -29,7 +29,7 @@ mixin TranslatorUtil {
 
   /// Generate the current locale which will use for displaying the language
   /// which the app is change during translate() function called.
-  static Future<Locale> getInitLocale(String lInit, String cInit) async {
+  static Future<Locale?> getInitLocale(String? lInit, String? cInit) async {
     return await _getLocale() ?? Locale(lInit ?? 'en', cInit ?? '');
   }
 }
