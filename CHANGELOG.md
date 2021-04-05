@@ -1,3 +1,5 @@
+## 0.1.1
+* add plugin for web support
 ## 0.1.0
 * migrate to support null-safety
 ## 0.0.12

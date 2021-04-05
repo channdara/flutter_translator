@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_translator/assets/language_name.dart';
 import 'package:flutter_translator/flutter_translator.dart';
 
 class Translator {
@@ -10,8 +11,8 @@ class Translator {
 
   static final Translator instance = Translator._singleton();
 
-  static Map<String, dynamic>? _string = {};
-  static Map<String, dynamic>? _name = {};
+  static Map<String, dynamic> _string = {};
+  static Map<String, dynamic> _name = {};
   static bool _isInitWithMap = false;
   static List<MapLocale> _mapLocales = [];
 
@@ -37,7 +38,7 @@ class Translator {
     } else {
       final path = 'assets/locales/localization_${locale.languageCode}.json';
       final jsonContent = await rootBundle.loadString(path);
-      _string = json.decode(jsonContent) as Map<String, dynamic>?;
+      _string = json.decode(jsonContent);
     }
     return instance;
   }
@@ -45,19 +46,15 @@ class Translator {
   /// This function will load the language name from the json file. This might
   /// not be 100% accurate but you can help by reporting the incorrect language
   /// name in our repository.
-  Future<void> loadLanguageName() async {
-    final path = 'packages/flutter_translator/assets/language_name.json';
-    final jsonContent = await rootBundle.loadString(path);
-    _name = json.decode(jsonContent) as Map<String, dynamic>?;
-  }
+  void loadLanguageName() => _name = languageName;
 
   /// This function will return the value of the json file which loaded by the
   /// load function above.
   String getString(String key) =>
-      _string![key] == null ? '$key not found' : _string![key].toString();
+      _string[key] == null ? '$key not found' : _string[key].toString();
 
   /// This function will return the language name by the language code provided.
-  String getName(String languageCode) => _name![languageCode] == null
+  String getName(String languageCode) => _name[languageCode] == null
       ? 'Name for $languageCode not found'
-      : _name![languageCode].toString();
+      : _name[languageCode].toString();
 }

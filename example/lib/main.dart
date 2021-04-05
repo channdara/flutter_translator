@@ -55,7 +55,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final _translator = TranslatorGenerator.instance;
+  final TranslatorGenerator _translator = TranslatorGenerator.instance;
 
   @override
   Widget build(BuildContext context) {
