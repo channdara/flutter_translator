@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translator/flutter_translator.dart';
+import 'package:flutter_translator_example/app_locale.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,10 +14,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final TranslatorGenerator _translator = TranslatorGenerator.instance;
 
-  final Map<String, dynamic> en = {'title': 'English Title From Map'};
-  final Map<String, dynamic> km = {'title': 'Khmer Title From Map'};
-  final Map<String, dynamic> ja = {'title': 'Japanese Title From Map'};
-
   @override
   void initState() {
     // _translator.init(
@@ -25,9 +22,9 @@ class _MyAppState extends State<MyApp> {
     // );
     _translator.initWithMap(
       mapLocales: [
-        MapLocale('en', en),
-        MapLocale('km', km),
-        MapLocale('ja', ja),
+        MapLocale('en', AppLocale.EN),
+        MapLocale('km', AppLocale.KM),
+        MapLocale('ja', AppLocale.JA),
       ],
       initLanguageCode: 'en',
     );
@@ -60,7 +57,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_translator.getString(context, 'title'))),
+      appBar: AppBar(
+        title: Text(_translator.getString(context, AppLocale.title)),
+      ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -5,10 +5,15 @@ flutter_localizations itself.
 
 # How To Use
 
-## Create the json file for the language translation
+## Prepare language sources (Json file or Map data)
+There are 2 ways of initializing the language source where the text display in app will load from,
+one is from **Json file** and another one is from **Map data**. You will need to prepare one of
+these two methods.
+
+### 1. From Json file
 We're not support the dynamic path and file name yet so the json files have to be at the 
 **assets/locales/** and the file name has to be **localization_{languageCode}.json** 
-example: **localization_en.json** So the directory tree will look like this:
+for example: **localization_en.json**. So the directory tree will look similar to this:
 ```
 project_root_directory
 |__ ...
@@ -30,6 +35,20 @@ assets:
     - assets/locales/
 ```
 
+### 2. From Map data
+Create a dart file which will contain all the Map data of the locale language your app need.
+You can change the file name, class name, and file path whatever you like for this method:
+```
+mixin AppLocale {
+  static const String title = 'title';
+
+  static const Map<String, dynamic> EN = {title: 'English Title From Map'};
+  static const Map<String, dynamic> KM = {title: 'Khmer Title From Map'};
+  static const Map<String, dynamic> JA = {title: 'Japanese Title From Map'};
+}
+
+```
+
 ## Project configuration
 * Initialize the TranslatorGenerator object (this can be local or global, up to you)
 ```
@@ -37,24 +56,24 @@ final TranslatorGenerator translator = TranslatorGenerator.instance;
 ```
 
 * Init the supported languages and default language code for the app. 
-Using init() function if you wish to do the localization with json file 
-or initWithMap() with Map<String, dynamic>. 
+Using **init()** function if you wish to do the localization with **json file** 
+or **initWithMap()** with **Map<String, dynamic>**. Only one method need to be initialize.
 This has to be done only at the main.dart or the first MaterialApp in your project.
 ```
 @override
 void initState() {
+    /// if you use the first method (with Json file)
     translator.init(
         supportedLanguageCodes: ['en', 'km', 'ja'],
         initLanguageCode: 'en',
     );
 
-    /// or
-
+    /// if you use the second method (with Map data)
     _translator.initWithMap(
         mapLocales: [
-            MapLocale('en', MAP_EN),
-            MapLocale('km', MAP_KM),
-            MapLocale('ja', MAP_JA),
+            MapLocale('en', AppLocale.EN),
+            MapLocale('km', AppLocale.KM),
+            MapLocale('ja', AppLocale.JA),
         ],
         initLanguageCode: 'en',
     );
@@ -62,6 +81,7 @@ void initState() {
     super.initState();
 }
 
+/// the setState function here is a must to add
 void _onTranslatedLanguage(Locale locale) {
     setState(() {});
 }

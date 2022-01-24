@@ -1,3 +1,5 @@
+## 0.1.2
+* update some dependencies use to support the package and README document
 ## 0.1.1
 * add plugin for web support
 ## 0.1.0
