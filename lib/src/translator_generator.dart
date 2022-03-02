@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_translator/src/delegate.dart';
 import 'package:flutter_translator/src/map_locale.dart';
 import 'package:flutter_translator/src/translator.dart';
-import 'package:flutter_translator/src/util.dart';
+import 'package:flutter_translator/src/translator_delegate.dart';
+import 'package:flutter_translator/src/translator_util.dart';
 
 typedef TranslatorCallback = void Function(Locale?);
 
 class TranslatorGenerator {
   TranslatorGenerator._singleton() {
-    Translator.instance.loadLanguageName();
     _delegate = TranslatorDelegate(null);
   }
 
@@ -27,7 +26,7 @@ class TranslatorGenerator {
 
   /// Callback for the translation. This will call after the translate()
   /// function is called.
-  late TranslatorCallback onTranslatedLanguage;
+  TranslatorCallback? onTranslatedLanguage;
 
   /// Initialize the supported languages and init language code when the app is
   /// start up. Both field will required.
@@ -37,6 +36,7 @@ class TranslatorGenerator {
   ///
   /// initLanguageCode mostly passed from the shared_preferences for checking
   /// the init language to display when the app is start up.
+  @Deprecated('please use \'initWithMap\' instead')
   Future<void> init({
     required List<String> supportedLanguageCodes,
     required String initLanguageCode,
@@ -73,7 +73,7 @@ class TranslatorGenerator {
       initCountryCode,
     );
     _delegate = TranslatorDelegate(_currentLocale);
-    onTranslatedLanguage(_currentLocale);
+    if (onTranslatedLanguage != null) onTranslatedLanguage!(_currentLocale);
   }
 
   /// Call this function at where you want to translate the app like by
@@ -86,7 +86,7 @@ class TranslatorGenerator {
     if (save) TranslatorUtil.setLocale(languageCode, countryCode);
     _currentLocale = Locale(languageCode, countryCode);
     _delegate = TranslatorDelegate(_currentLocale);
-    onTranslatedLanguage(_currentLocale);
+    if (onTranslatedLanguage != null) onTranslatedLanguage!(_currentLocale);
   }
 
   /// This just call the getString() function from Translator class for getting

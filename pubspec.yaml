@@ -21,9 +21,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  assets:
-    - packages/flutter_translator/assets/language_name.json
-
   plugin:
     platforms:
       ios:
