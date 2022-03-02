@@ -1,3 +1,5 @@
+## 0.1.3
+* allowed the **onTranslatedLanguage** callback to be null. Thank to @Hasankanso for the suggesstion
 ## 0.1.2
 * update some dependencies use to support the package and README document
 ## 0.1.1
