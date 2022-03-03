@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translator/flutter_translator.dart';
-import 'package:flutter_translator_example/app_locale.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,10 +15,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // _translator.init(
-    //   supportedLanguageCodes: ['en', 'km', 'ja'],
-    //   initLanguageCode: 'km',
-    // );
     _translator.initWithMap(
       mapLocales: [
         MapLocale('en', AppLocale.EN),
@@ -100,4 +95,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+}
+
+mixin AppLocale {
+  static const String title = 'title';
+
+  static const Map<String, dynamic> EN = {title: 'English Title From Map'};
+  static const Map<String, dynamic> KM = {title: 'Khmer Title From Map'};
+  static const Map<String, dynamic> JA = {title: 'Japanese Title From Map'};
 }

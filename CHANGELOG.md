@@ -1,3 +1,6 @@
+## 0.1.3
+* optimize some code and allowed the **onTranslatedLanguage** callback to be null. Thank to **@Hasankanso** for the suggestion
+* NOTE: **init()** function will be remove soon for better load time and performance, please use **initWithMap()** instead
 ## 0.1.2
 * update some dependencies use to support the package and README document
 ## 0.1.1

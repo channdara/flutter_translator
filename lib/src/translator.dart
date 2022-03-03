@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_translator/assets/language_name.dart';
 import 'package:flutter_translator/flutter_translator.dart';
+import 'package:flutter_translator/src/language_name.dart';
 
 class Translator {
   Translator._singleton();
@@ -12,7 +12,6 @@ class Translator {
   static final Translator instance = Translator._singleton();
 
   static Map<String, dynamic> _string = {};
-  static Map<String, dynamic> _name = {};
   static bool _isInitWithMap = false;
   static List<MapLocale> _mapLocales = [];
 
@@ -43,18 +42,13 @@ class Translator {
     return instance;
   }
 
-  /// This function will load the language name from the json file. This might
-  /// not be 100% accurate but you can help by reporting the incorrect language
-  /// name in our repository.
-  void loadLanguageName() => _name = languageName;
-
   /// This function will return the value of the json file which loaded by the
   /// load function above.
   String getString(String key) =>
       _string[key] == null ? '$key not found' : _string[key].toString();
 
   /// This function will return the language name by the language code provided.
-  String getName(String languageCode) => _name[languageCode] == null
+  String getName(String languageCode) => languageName[languageCode] == null
       ? 'Name for $languageCode not found'
-      : _name[languageCode].toString();
+      : languageName[languageCode].toString();
 }
