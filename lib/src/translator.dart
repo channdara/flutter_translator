@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_translator/src/language_name.dart';
 import 'package:flutter_translator/flutter_translator.dart';
+import 'package:flutter_translator/src/language_name.dart';
 
 class Translator {
   Translator._singleton();
