@@ -84,7 +84,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: ElevatedButton(
                     child: const Text('Japanese'),
                     onPressed: () {
-                      print(_translator.currentLocale?.languageCode);
                       _translator.translate('ja', save: false);
                     },
                   ),
