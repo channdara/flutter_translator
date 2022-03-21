@@ -7,19 +7,19 @@ class TranslatorDelegate extends LocalizationsDelegate<Translator> {
 
   final Locale? newLocale;
 
-  /// The override function from LocalizationsDelegate to check the supported
+  /// The override function from [LocalizationsDelegate] to check the supported
   /// language provided by the app configuration
   @override
   bool isSupported(Locale locale) =>
       TranslatorGenerator.instance.supportedLanguageCodes
           .contains(locale.languageCode);
 
-  /// The override function from LocalizationsDelegate to load the locale
+  /// The override function from [LocalizationsDelegate] to load the locale
   @override
   Future<Translator> load(Locale locale) =>
       Translator.load(newLocale ?? locale);
 
-  /// The override function from LocalizationsDelegate to reload the locale.
+  /// The override function from [LocalizationsDelegate] to reload the locale.
   @override
   bool shouldReload(LocalizationsDelegate<Translator> old) => true;
 }

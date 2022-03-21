@@ -9,7 +9,6 @@ class MapLocale {
   /// Country code is the region subtag for the locale.
   final String? countryCode;
 
-  /// This is the map of data that will use for localization. Just like the
-  /// json file too.
+  /// This is the map of data that will use for localization.
   final Map<String, dynamic> mapData;
 }

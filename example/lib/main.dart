@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    _translator.initWithMap(
+    _translator.init(
       mapLocales: [
         MapLocale('en', AppLocale.EN),
         MapLocale('km', AppLocale.KM),
@@ -72,6 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     },
                   ),
                 ),
+                const SizedBox(width: 8.0),
                 Expanded(
                   child: ElevatedButton(
                     child: const Text('Khmer'),
@@ -80,6 +81,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     },
                   ),
                 ),
+                const SizedBox(width: 8.0),
                 Expanded(
                   child: ElevatedButton(
                     child: const Text('Japanese'),
