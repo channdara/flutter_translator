@@ -1,3 +1,6 @@
+## 0.1.4
+* I have found some issues and a little bit low performance when using the **load from json file** method, so I decided to remove it for better usage
+* remove the old **init()** function and rename the **initWithMap()** to **init()** instead
 ## 0.1.3
 * optimize some code and allowed the **onTranslatedLanguage** callback to be null. Thank to **@Hasankanso** for the suggestion
 * NOTE: **init()** function will be remove soon for better load time and performance, please use **initWithMap()** instead

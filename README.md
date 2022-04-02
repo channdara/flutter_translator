@@ -5,39 +5,9 @@ flutter_localizations itself.
 
 # How To Use
 
-## Prepare language sources (Json file or Map data)
-There are 2 ways of initializing the language source where the text display in app will load from,
-one is from **Json file** and another one is from **Map data**. You will need to prepare one of
-these two methods.
-
-### 1. From Json file
-We're not support the dynamic path and file name yet so the json files have to be at the 
-**assets/locales/** and the file name has to be **localization_{languageCode}.json** 
-for example: **localization_en.json**. So the directory tree will look similar to this:
-```
-project_root_directory
-|__ ...
-|__ android
-|__ assets
-    |__ fonts
-    |__ images
-    |__ locales
-        |__ localization_en.json
-        |__ localization_km.json
-        |__ localization_ja.json
-|__ ios
-|__ lib
-|__ ...
-```
-And don't for get to add asset path to the **pubspec.yaml**:
-```
-assets:
-    - assets/locales/
-```
-
-### 2. From Map data
+## Prepare language source (Map<String, dynamic>)
 Create a dart file which will contain all the Map data of the locale language your app need.
-You can change the file name, class name, and file path whatever you like for this method:
+You can change the file name, class name, and file path whatever you like. Example:
 ```
 mixin AppLocale {
   static const String title = 'title';
@@ -55,21 +25,12 @@ mixin AppLocale {
 final TranslatorGenerator translator = TranslatorGenerator.instance;
 ```
 
-* Init the supported languages and default language code for the app. 
-Using **init()** function if you wish to do the localization with **json file** 
-or **initWithMap()** with **Map<String, dynamic>**. Only one method need to be initialize.
+* Init the list of MapLocale and startup language for the app.
 This has to be done only at the main.dart or the first MaterialApp in your project.
 ```
 @override
 void initState() {
-    /// if you use the first method (with Json file)
-    translator.init(
-        supportedLanguageCodes: ['en', 'km', 'ja'],
-        initLanguageCode: 'en',
-    );
-
-    /// if you use the second method (with Map data)
-    _translator.initWithMap(
+    _translator.init(
         mapLocales: [
             MapLocale('en', AppLocale.EN),
             MapLocale('km', AppLocale.KM),
@@ -110,7 +71,7 @@ RaisedButton(
 ),
 ```
 
-* To display the value from the json file, just use the getString function 
+* To display the value from the map data, just use the getString function 
 by providing context and key
 ```
 translator.getString(context, 'title');

@@ -18,44 +18,26 @@ class TranslatorGenerator {
   /// The package delegate. This is private, only use in the package.
   TranslatorDelegate? _delegate;
 
-  /// The list of supported language code provide by the init() function
+  /// The list of supported language code provide by the [init] function
   List<String> _supportedLanguageCodes = const [];
 
-  /// The current locale of the app. It will change after translate() called.
+  /// The current locale of the app. It will change after [translate] called.
   Locale? _currentLocale;
 
-  /// Callback for the translation. This will call after the translate()
+  /// Callback for the translation. This will call after the [translate]
   /// function is called.
   TranslatorCallback? onTranslatedLanguage;
 
-  /// Initialize the supported languages and init language code when the app is
-  /// start up. Both field will required.
-  ///
-  /// supportedLanguageCodes use for checking the supported languages in
-  /// the app and return the supportedLocales for the MaterialApp.
+  /// Initialize the list of mapLocale (see [MapLocale] model for info)
+  /// and initLanguageCode code when the app is start up. Both field will required.
   ///
   /// initLanguageCode mostly passed from the shared_preferences for checking
   /// the init language to display when the app is start up.
-  @Deprecated('please use \'initWithMap\' instead')
   Future<void> init({
-    required List<String> supportedLanguageCodes,
-    required String initLanguageCode,
-    String? initCountryCode,
-  }) async {
-    Translator.instance.initStatus = false;
-    _supportedLanguageCodes = supportedLanguageCodes;
-    await _handleLocale(initLanguageCode, initCountryCode);
-  }
-
-  /// This work similar to the init() function too. The different is, init() load
-  /// string from json file, initWithMap() load string from map provided by
-  /// the list of mapLocale (mapLocales).
-  Future<void> initWithMap({
     required List<MapLocale> mapLocales,
     required String initLanguageCode,
     String? initCountryCode,
   }) async {
-    Translator.instance.initStatus = true;
     Translator.instance.mapLocales = mapLocales;
     _supportedLanguageCodes = mapLocales.map((e) => e.languageCode).toList();
     await _handleLocale(initLanguageCode, initCountryCode);
@@ -89,17 +71,17 @@ class TranslatorGenerator {
     if (onTranslatedLanguage != null) onTranslatedLanguage!(_currentLocale);
   }
 
-  /// This just call the getString() function from Translator class for getting
-  /// the translated value from json file.
+  /// This just call the getString() function from [Translator] class for getting
+  /// the translated value from map data.
   String getString(BuildContext context, String key) =>
       Translator.of(context)!.getString(key);
 
-  /// This just call the getName() function from Translator class for getting
+  /// This just call the getName() function from [Translator] class for getting
   /// the full language name by the language code.
   String getLanguageName({String? languageCode}) =>
       Translator.instance.getName(languageCode ?? _currentLocale!.languageCode);
 
-  /// Get the list of supported language code provide by the init() function
+  /// Get the list of supported language code provide by the [init] function
   List<String> get supportedLanguageCodes => _supportedLanguageCodes;
 
   /// Get the current locale of the app.
