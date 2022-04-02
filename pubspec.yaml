@@ -3,6 +3,9 @@ description: Flutter Translator is a package use for in-app localization with js
 version: 0.1.4
 homepage: https://github.com/channdara/flutter_translator
 
+# check package before publish: flutter pub publish --dry-run
+# publish package: flutter pub publish
+
 environment:
   sdk: '>=2.12.0 <3.0.0'
   flutter: '>=1.12.13'

@@ -1,7 +1,9 @@
 # Flutter Translator
-Flutter Translator is a package use for in-app localization with json file. 
+Flutter Translator is a package use for in-app localization with Map data. 
 More easier and faster to implement. This package is inspired by the 
-flutter_localizations itself.
+**flutter_localizations** itself. Follow the step below to use the package or 
+checkout a small complete [example](https://pub.dev/packages/flutter_translator/example) 
+project of the package.
 
 # How To Use
 
@@ -16,17 +18,16 @@ mixin AppLocale {
   static const Map<String, dynamic> KM = {title: 'Khmer Title From Map'};
   static const Map<String, dynamic> JA = {title: 'Japanese Title From Map'};
 }
-
 ```
 
 ## Project configuration
-* Initialize the TranslatorGenerator object (this can be local or global, up to you)
+* Initialize the **TranslatorGenerator** object (this can be local or global, up to you)
 ```
 final TranslatorGenerator translator = TranslatorGenerator.instance;
 ```
 
-* Init the list of MapLocale and startup language for the app.
-This has to be done only at the main.dart or the first MaterialApp in your project.
+* Init the list of **MapLocale** and startup language for the app.
+This has to be done only at the **main.dart** or the first **MaterialApp** in your project.
 ```
 @override
 void initState() {
@@ -48,7 +49,7 @@ void _onTranslatedLanguage(Locale locale) {
 }
 ```
 
-* Add supportedLocales and localizationsDelegates to the MaterialApp
+* Add **supportedLocales** and **localizationsDelegates** to the **MaterialApp**
 ```
 @override
 Widget build(BuildContext context) {
@@ -60,7 +61,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-* Call the translate function anytime you want to translate the app and provide it with 
+* Call the **translate** function anytime you want to translate the app and provide it with 
 the language code
 ```
 RaisedButton(
@@ -71,8 +72,8 @@ RaisedButton(
 ),
 ```
 
-* To display the value from the map data, just use the getString function 
-by providing context and key
+* To display the value from the Map data, just call the **getString** function 
+by providing context and key of the data
 ```
 translator.getString(context, 'title');
 ```
