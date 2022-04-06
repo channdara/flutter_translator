@@ -31,7 +31,7 @@ This has to be done only at the **main.dart** or the first **MaterialApp** in yo
 ```
 @override
 void initState() {
-    _translator.init(
+    translator.init(
         mapLocales: [
             MapLocale('en', AppLocale.EN),
             MapLocale('km', AppLocale.KM),
