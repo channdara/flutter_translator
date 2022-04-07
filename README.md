@@ -5,6 +5,8 @@ More easier and faster to implement. This package is inspired by the
 checkout a small complete [example](https://pub.dev/packages/flutter_translator/example) 
 project of the package.
 
+<a href="https://www.buymeacoffee.com/eamchanndara" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 # How To Use
 
 ## Prepare language source (Map<String, dynamic>)
@@ -87,5 +89,3 @@ translator.getLanguageName(languageCode: 'ja');  // 日本語
 
 translator.getLanguageName();  // get language name depend on current app locale
 ```
-
-## If you like my work, please support me by: <a href="https://www.buymeacoffee.com/eamchanndara" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
