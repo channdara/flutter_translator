@@ -65,6 +65,7 @@ class TranslatorGenerator {
     String countryCode = '',
     bool save = true,
   }) {
+    if(languageCode == _currentLocale?.languageCode) return;
     if (save) TranslatorUtil.setLocale(languageCode, countryCode);
     _currentLocale = Locale(languageCode, countryCode);
     _delegate = TranslatorDelegate(_currentLocale);

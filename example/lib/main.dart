@@ -75,7 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 8.0),
                 Expanded(
                   child: ElevatedButton(
-                    child: const Text('Khmer'),
+                    child: const Text('ភាសាខ្មែរ'),
                     onPressed: () {
                       _translator.translate('km');
                     },
@@ -84,7 +84,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 8.0),
                 Expanded(
                   child: ElevatedButton(
-                    child: const Text('Japanese'),
+                    child: const Text('日本語'),
                     onPressed: () {
                       _translator.translate('ja', save: false);
                     },
@@ -102,7 +102,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 mixin AppLocale {
   static const String title = 'title';
 
-  static const Map<String, dynamic> EN = {title: 'English Title From Map'};
-  static const Map<String, dynamic> KM = {title: 'Khmer Title From Map'};
-  static const Map<String, dynamic> JA = {title: 'Japanese Title From Map'};
+  static const Map<String, dynamic> EN = {title: 'Localization'};
+  static const Map<String, dynamic> KM = {title: 'ការធ្វើមូលដ្ឋានីយកម្ម'};
+  static const Map<String, dynamic> JA = {title: 'ローカリゼーション'};
 }

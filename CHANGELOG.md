@@ -1,3 +1,7 @@
+## 0.1.5
+* add condition to the **translate()** function to prevent it recall on the same provided **languageCode**
+* update some dependencies use to support the package
+* small make-change on **example** file
 ## 0.1.4
 * I have found some issues and a little bit low performance when using the **load from json file** method, so I decided to remove it for better usage
 * remove the old **init()** function and rename the **initWithMap()** to **init()** instead

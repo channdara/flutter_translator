@@ -16,9 +16,9 @@ You can change the file name, class name, and file path whatever you like. Examp
 mixin AppLocale {
   static const String title = 'title';
 
-  static const Map<String, dynamic> EN = {title: 'English Title From Map'};
-  static const Map<String, dynamic> KM = {title: 'Khmer Title From Map'};
-  static const Map<String, dynamic> JA = {title: 'Japanese Title From Map'};
+  static const Map<String, dynamic> EN = {title: 'Localization'};
+  static const Map<String, dynamic> KM = {title: 'ការធ្វើមូលដ្ឋានីយកម្ម'};
+  static const Map<String, dynamic> JA = {title: 'ローカリゼーション'};
 }
 ```
 
@@ -58,7 +58,7 @@ Widget build(BuildContext context) {
     return MaterialApp(
         supportedLocales: translator.supportedLocales,
         localizationsDelegates: translator.localizationsDelegates,
-        home: HomeScreen(),
+        home: SettingsScreen(),
     );
 }
 ```
@@ -66,12 +66,12 @@ Widget build(BuildContext context) {
 * Call the **translate** function anytime you want to translate the app and provide it with 
 the language code
 ```
-RaisedButton(
-    child: Text('English'),
+ElevatedButton(
+    child: const Text('English'),
     onPressed: () {
         translator.translate('en');
     },
-),
+)
 ```
 
 * To display the value from the Map data, just call the **getString** function 
