@@ -71,7 +71,7 @@ ElevatedButton(
     onPressed: () {
         translator.translate('en');
     },
-)
+);
 ```
 
 * To display the value from the Map data, just call the **getString** function 
