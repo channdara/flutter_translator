@@ -53,7 +53,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_translator.getString(context, AppLocale.title)),
+        title: Text(_translator.getString(AppLocale.title)),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),

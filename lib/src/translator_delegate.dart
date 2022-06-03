@@ -17,7 +17,7 @@ class TranslatorDelegate extends LocalizationsDelegate<Translator> {
   /// The override function from [LocalizationsDelegate] to load the locale
   @override
   Future<Translator> load(Locale locale) =>
-      Translator.load(newLocale ?? locale);
+      Translator.instance.load(newLocale ?? locale);
 
   /// The override function from [LocalizationsDelegate] to reload the locale.
   @override

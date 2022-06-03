@@ -12,15 +12,12 @@ class Translator {
   static Map<String, dynamic> _string = {};
   static List<MapLocale> _mapLocales = [];
 
-  static Translator? of(BuildContext context) =>
-      Localizations.of<Translator>(context, Translator);
-
   set mapLocales(List<MapLocale> mapLocales) => _mapLocales = mapLocales;
 
   /// This function will load the value from the specific map data that provided
   /// by the [MapLocale] object from the initialization and return an instance
-  /// of the [Translator} class as a Future.
-  static Future<Translator> load(Locale locale) async {
+  /// of the [Translator] class as a Future.
+  Future<Translator> load(Locale locale) async {
     _string = _mapLocales
         .where((e) => e.languageCode == locale.languageCode)
         .first

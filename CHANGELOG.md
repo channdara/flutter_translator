@@ -1,3 +1,6 @@
+## 0.1.6
+* update some dependencies use to support the package
+* remove the required context in **getString()** method
 ## 0.1.5
 * add condition to the **translate()** function to prevent it recall on the same provided **languageCode**
 * update some dependencies use to support the package

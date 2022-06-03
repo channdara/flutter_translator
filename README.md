@@ -75,9 +75,9 @@ ElevatedButton(
 ```
 
 * To display the value from the Map data, just call the **getString** function 
-by providing context and key of the data
+by providing the key of the data
 ```
-translator.getString(context, 'title');
+translator.getString('title');
 ```
 
 * You also can get the language name too. If you don't specify the language code for the function,

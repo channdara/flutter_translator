@@ -74,8 +74,7 @@ class TranslatorGenerator {
 
   /// This just call the getString() function from [Translator] class for getting
   /// the translated value from map data.
-  String getString(BuildContext context, String key) =>
-      Translator.of(context)!.getString(key);
+  String getString(String key) => Translator.instance.getString(key);
 
   /// This just call the getName() function from [Translator] class for getting
   /// the full language name by the language code.
