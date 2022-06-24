@@ -1,3 +1,5 @@
+## 0.1.7
+* added string extension for more easy use of the **getString** function
 ## 0.1.6
 * update some dependencies use to support the package
 * remove the required context in **getString()** method

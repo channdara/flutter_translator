@@ -75,9 +75,14 @@ ElevatedButton(
 ```
 
 * To display the value from the Map data, just call the **getString** function 
-by providing the key of the data
+by providing the key of the data or use the **getString** extension
+(the **AppLocale.title** is the constant from mixin class above)
 ```
-translator.getString('title');
+translator.getString(AppLocale.title); 
+
+or
+
+AppLocale.title.getString();
 ```
 
 * You also can get the language name too. If you don't specify the language code for the function,
